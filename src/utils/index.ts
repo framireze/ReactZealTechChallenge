@@ -44,8 +44,12 @@ export const USERS = [
 ]
 
 export const getGifts = () => {
-  const gifts = 'bici coche pelota _playstation bici _coche peluche coche bici'
-
+  const gifts = 'bici coche pelota _playstation bici _coche peluche coche bici'.split(' ')
+                      .filter(e => !e.startsWith('_'))
+                      .reduce((acumulador: any, elemento:string)=>{
+                        acumulador[elemento] = (acumulador[elemento] || 0) + 1;
+                        return acumulador
+                    },{});
   // your code here
 
   return gifts

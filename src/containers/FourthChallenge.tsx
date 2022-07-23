@@ -1,5 +1,5 @@
 import { Container, Divider } from '@mui/material'
-import { FC, useState } from 'react'
+import { FC, useState, memo } from 'react'
 
 import { useFlasher } from 'utils/hooks'
 
@@ -26,24 +26,24 @@ const FourthChallenge = () => {
   )
 }
 
-const AgeDisplay: FC<AgeDisplayProps> = ({ length }) => {
+const AgeDisplay: FC<AgeDisplayProps> = memo(({ length }) => {
   const myRef = useFlasher<HTMLDivElement>()
-
+  
   return (
     <div ref={myRef}>
       <p>Age: {length}</p>
     </div>
   )
-}
+})
 
-const NameDisplay: FC<NameDisplayProps> = ({ name }) =>  {
+const NameDisplay: FC<NameDisplayProps> = memo(({ name }) =>  {
   const myRef = useFlasher<HTMLDivElement>()
-
+  console.log('Se disparo el nombre:',name)
   return (
     <div ref={myRef}>
       <p>Your name is: {name}</p>
     </div>
   )
-}
+})
 
 export default FourthChallenge
